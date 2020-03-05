@@ -15,8 +15,13 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
+- script: |frontend/todo-list
     npm install -g @angular/cli
     npm install
     ng build --prod
   displayName: 'npm install and build'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'angular'
+    targetPath: 'frontend/todo-list/dist'
