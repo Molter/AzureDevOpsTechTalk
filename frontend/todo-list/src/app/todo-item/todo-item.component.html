@@ -4,6 +4,15 @@
   </span>
   <mat-divider [vertical]="true"></mat-divider>
   <span class="actions">
-    <mat-icon>delete</mat-icon>
+   <button
+   mat-button
+   (click)="delete($event)"
+   >
+    <mat-icon
+    matTooltip="Delete this item"
+    >
+      delete
+    </mat-icon>
+   </button>
   </span>
 </div>

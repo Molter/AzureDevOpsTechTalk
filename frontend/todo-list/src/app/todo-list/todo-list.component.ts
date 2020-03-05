@@ -42,5 +42,15 @@ export class TodoListComponent implements OnInit {
   saveNewItemIndex(todoItem: TodoItem) {
     this.todoService.put(todoItem).subscribe();
   }
+  newItemCreated(todoItem: TodoItem) {
+    this.todo.push(todoItem);
+  }
+  removeFromLists(todoItem: TodoItem) {
+    if (todoItem.status === TodoItemStatus.TODO) {
+      this.todo = this.todo.filter(x => x.id !== todoItem.id);
+    } else {
+      this.done = this.done.filter(x => x.id !== todoItem.id);
+    }
+  }
 
 }

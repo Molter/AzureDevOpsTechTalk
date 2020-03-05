@@ -25,10 +25,16 @@ export class TodoListService {
   }
 
   public put(todoItem: TodoItem) {
-    return this.http.put<TodoItem[]>(this.url, todoItem, this.httpOptions);
+    return this.http.put<TodoItem>(this.url, todoItem, this.httpOptions);
   }
 
-  public post(todoItem: TodoItem) {
-    return this.http.post<TodoItem[]>(this.url, todoItem, this.httpOptions);
+  public post(newItem: TodoItem) {
+    return this.http.post<TodoItem>(this.url, newItem, this.httpOptions);
+  }
+
+  public delete(todoItem: TodoItem) {
+    const url = `${this.url}/${todoItem.id}`;
+
+    return this.http.delete(url, this.httpOptions);
   }
 }

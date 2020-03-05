@@ -35,17 +35,31 @@ namespace TodoList.Controllers
             return items;
         }
         [HttpPost]
-        public void Post(TodoItem newItem)
+        public TodoItem Post(TodoItem todoItem)
         {
+            var newId = items.Max(x => x.Id) + 1;
+            var newIndex = items.Max(x => x.Index) + 1;
+            var newItem = new TodoItem()
+            { Id = newId, Description = todoItem.Description, Status = TodoItemStatus.Todo, Index = newIndex };
             items.Add(newItem);
+
+            return newItem;
         }
         [HttpPut]
-        public void Put(TodoItem newItem)
+        public TodoItem Put(TodoItem newItem)
         {
             items.Remove(
                 items.Where(x => x.Id == newItem.Id).First()
             );
             items.Add(newItem);
+            return newItem;
+        }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            items.Remove(
+                items.Where(x => x.Id == id).First()
+            );
         }
     }
 }

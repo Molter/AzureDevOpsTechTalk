@@ -10,7 +10,7 @@
     <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="doneList" class="list"
       (cdkDropListDropped)="drop($event, 0)">
       <div class="list-item" *ngFor="let item of todo" [cdkDragData]="item" cdkDrag>
-        <app-todo-item [todoItem]="item"></app-todo-item>
+        <app-todo-item [todoItem]="item" (itemDeleted)="removeFromLists($event)" ></app-todo-item>
       </div>
     </div>
   </mat-card-content>
@@ -28,8 +28,12 @@
     <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="todoList" class="list"
       (cdkDropListDropped)="drop($event, 1)">
       <div class="list-item" *ngFor="let item of done" [cdkDragData]="item" cdkDrag>
-        <app-todo-item [todoItem]="item"></app-todo-item>
+        <app-todo-item [todoItem]="item" (itemDeleted)="removeFromLists($event)"></app-todo-item>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
+
+<div class="new-item container">
+  <app-new-item (itemCreated)="newItemCreated($event)"></app-new-item>
+</div>

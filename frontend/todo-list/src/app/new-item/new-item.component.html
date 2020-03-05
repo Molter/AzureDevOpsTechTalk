@@ -1,0 +1,15 @@
+<form [formGroup]="todoItemForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="New item description" formControlName="description">
+        <mat-error *ngIf="todoItemForm.controls['description'].hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" type="submit">Create</button>
+    </div>
+  </div>
+</form>
