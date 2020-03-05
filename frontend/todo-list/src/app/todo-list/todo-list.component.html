@@ -1,0 +1,35 @@
+<mat-card class="container">
+  <mat-card-header>
+    <div mat-card-avatar class="header-icon">
+      <mat-icon>format_list_bulleted</mat-icon>
+    </div>
+    <mat-card-title>TODO</mat-card-title>
+    <mat-card-subtitle>Pending activities</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="doneList" class="list"
+      (cdkDropListDropped)="drop($event, 0)">
+      <div class="list-item" *ngFor="let item of todo" [cdkDragData]="item" cdkDrag>
+        <app-todo-item [todoItem]="item"></app-todo-item>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="container">
+  <mat-card-header>
+    <div mat-card-avatar class="header-icon">
+      <mat-icon>done</mat-icon>
+    </div>
+    <mat-card-title>DONE</mat-card-title>
+    <mat-card-subtitle>finished activities</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="todoList" class="list"
+      (cdkDropListDropped)="drop($event, 1)">
+      <div class="list-item" *ngFor="let item of done" [cdkDragData]="item" cdkDrag>
+        <app-todo-item [todoItem]="item"></app-todo-item>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

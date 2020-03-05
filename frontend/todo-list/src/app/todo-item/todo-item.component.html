@@ -1,0 +1,9 @@
+<div class="todo-item">
+  <span class="description" [ngClass]="{'done': todoItem.status === TodoItemStatus.DONE}">
+    {{todoItem.description}}
+  </span>
+  <mat-divider [vertical]="true"></mat-divider>
+  <span class="actions">
+    <mat-icon>delete</mat-icon>
+  </span>
+</div>

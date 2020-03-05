@@ -1,0 +1,23 @@
+.todo-item {
+  display: flex;
+  .description {
+    flex-grow: 8;
+    text-align: center;
+  }
+  mat-divider{
+    flex-grow: 1;
+  }
+  .actions{
+    flex-grow: 1;
+  }
+  .mat-icon {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .done {
+    text-decoration: line-through;
+  }
+}
