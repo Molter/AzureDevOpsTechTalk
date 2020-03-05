@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { of, Observable, EMPTY } from 'rxjs';
 import { TodoItem, TodoItemStatus } from '../models/todo-item';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoListService {
 
-  private url = 'https://localhost:44328/TodoItem';
+  private url: string;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -16,7 +17,9 @@ export class TodoListService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.url = environment.api_url;
+   }
 
   public get(): Observable<TodoItem[]> {
 
