@@ -1,12 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TodoListService } from './services/todo-list.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './shared/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
+  let todoServiceSpy: jasmine.SpyObj<TodoListService>;
+
   beforeEach(async(() => {
+    todoServiceSpy = jasmine.createSpyObj('TodoListService', ['get', 'put', 'post', 'delete']);
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
+      imports: [ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
+      providers: [
+        { provide: TodoListService, useValue: todoServiceSpy }
       ],
       declarations: [
         AppComponent
@@ -20,16 +28,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'todo-list'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('todo-list');
-  });
+  // it(`should have as title 'todo-list'`, () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app.title).toEqual('todo-list');
+  // });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('todo-list app is running!');
-  });
+  // it('should render title', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.nativeElement;
+  //   expect(compiled.querySelector('.content span').textContent).toContain('todo-list app is running!');
+  // });
 });

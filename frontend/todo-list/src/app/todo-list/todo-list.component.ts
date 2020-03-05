@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItem, TodoItemStatus } from '../models/todo-item';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { TodoListService } from '../services/todo-list.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
