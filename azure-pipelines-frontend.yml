@@ -21,8 +21,6 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
-  inputs:
-    workingDirectory: 'frontend/todo-list/'
 
 - task: PublishPipelineArtifact@0
   inputs:
