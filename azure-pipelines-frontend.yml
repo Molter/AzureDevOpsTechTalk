@@ -25,4 +25,4 @@ steps:
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'angular'
-    targetPath: 'frontend/todo-list/dist'
+    targetPath: 'frontend/todo-list/dist/todo-list/'
