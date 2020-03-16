@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'backend'
-    }
-
-  }
+  agent none
   stages {
     stage('DownloadSources') {
       steps {
