@@ -5,9 +5,9 @@ FROM node:12-alpine as builder
 COPY package.json package-lock.json ./
 
 # Install the dependencies and make the folder
-RUN npm install && mkdir /todo-ui && mv ./node_modules ./todo-ui
+RUN npm install && mkdir /todo-list && mv ./node_modules ./todo-list
 
-WORKDIR /todo-ui
+WORKDIR /todo-list
 
 COPY . .
 
@@ -25,8 +25,9 @@ COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stahg 1
-COPY --from=builder /todo-ui/dist /usr/share/nginx/html
+COPY --from=builder /todo-list/dist /usr/share/nginx/html
 
 EXPOSE 4200 80
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#ENTRYPOINT ["nginx", "-g"]
