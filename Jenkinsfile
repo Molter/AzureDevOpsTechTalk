@@ -7,6 +7,12 @@ pipeline {
       }
     }
 
+    stage('Docker backend') {
+      steps {
+        dir(path: 'backend/TodoList')
+      }
+    }
+
   }
   environment {
     ENVIRONMENT = 'dev'
