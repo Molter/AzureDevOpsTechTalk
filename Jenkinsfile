@@ -4,7 +4,9 @@ pipeline {
     stage('Docker frontend') {
       steps {
         dir('./backend/TodoList') {
-            sh 'docker image build -t todo-frontend:1.0 .'
+            docker {
+                dockerfile true
+            }
         }
       }
     }
